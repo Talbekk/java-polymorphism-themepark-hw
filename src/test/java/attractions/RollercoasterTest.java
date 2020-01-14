@@ -40,4 +40,14 @@ public class RollercoasterTest {
 
     @Test
     public void canPassEntryTest() { assertFalse(rollerCoaster.isAllowedTo(visitor1)); }
+
+    @Test
+    public void canChargeDoubleForTallerVisitor(){
+        assertEquals(16.80, rollerCoaster.priceFor(visitor), 0.1);
+    }
+
+    @Test
+    public void canChargeTheUsualPriceForSomeoneUnderTheHeightLimit(){
+        assertEquals(8.40, rollerCoaster.priceFor(visitor1), 0.1);
+    }
 }
