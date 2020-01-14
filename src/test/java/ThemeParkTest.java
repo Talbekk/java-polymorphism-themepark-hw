@@ -2,6 +2,7 @@ import attractions.*;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import people.Visitor;
 import stalls.CandyflossStall;
 import stalls.IceCreamStall;
 import stalls.ParkingSpot;
@@ -20,6 +21,7 @@ public class ThemeParkTest {
     CandyflossStall candyflossStall;
     IceCreamStall iceCreamStall;
     TobaccoStall tobaccoStall;
+    Visitor visitor;
 
 
     @Before
@@ -32,6 +34,7 @@ public class ThemeParkTest {
         candyflossStall = new CandyflossStall("Candy Land", "Harry Belafonte", ParkingSpot.A1, 7);
         tobaccoStall = new TobaccoStall("Jacks Drum", "Jack Jarvis", ParkingSpot.B1, 5);
         iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4, 8);
+        visitor = new Visitor(14, 1.2, 40.0);
 
         themePark.addItem(dodgems);
         themePark.addItem(park);
@@ -45,5 +48,12 @@ public class ThemeParkTest {
     @Test
     public void theThemeParkHasAttractionsAndStalls(){
         assertEquals(7, themePark.getItems().size());
+    }
+
+    @Test
+    public void canAddAttractionToListAndIncreaseVisitedCountByOne(){
+        themePark.visit(visitor, dodgems);
+        Assert.assertEquals(1, visitor.getAttractionsVisited().size());
+        Assert.assertEquals(1, dodgems.getVisitCount());
     }
 }
