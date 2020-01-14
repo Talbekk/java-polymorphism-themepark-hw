@@ -56,4 +56,9 @@ public class ThemeParkTest {
         Assert.assertEquals(1, visitor.getAttractionsVisited().size());
         Assert.assertEquals(1, dodgems.getVisitCount());
     }
+
+    @Test
+    public void canGetAListOfSpotsAndReview(){
+        assertEquals(7, themePark.getReviewList().size());
+    }
 }
