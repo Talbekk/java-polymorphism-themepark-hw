@@ -36,10 +36,10 @@ public class ThemeParkTest {
         iceCreamStall = new IceCreamStall("Dream Cones", "Vanilla Ice", ParkingSpot.A4, 8);
         visitor = new Visitor(14, 1.2, 40.0);
 
-        themePark.addItem(dodgems);
-        themePark.addItem(park);
-        themePark.addItem(playground);
-        themePark.addItem(rollerCoaster);
+        themePark.addAttraction(dodgems);
+        themePark.addAttraction(park);
+        themePark.addAttraction(playground);
+        themePark.addAttraction(rollerCoaster);
         themePark.addItem(candyflossStall);
         themePark.addItem(tobaccoStall);
         themePark.addItem(iceCreamStall);
@@ -58,7 +58,24 @@ public class ThemeParkTest {
     }
 
     @Test
+    public void canAddAttractions(){
+        themePark.addAttraction(dodgems);
+        assertEquals(1, themePark.getAttractions().size());
+    }
+
+    @Test
+    public void canAddStalls(){
+        themePark.addStall(candyflossStall);
+        assertEquals(1, themePark.getStalls().size());
+    }
+
+    @Test
     public void canGetAListOfSpotsAndReview(){
         assertEquals(7, themePark.getReviewList().size());
+    }
+
+    @Test
+    public void canGetAListOfAllowedAttractions(){
+        assertEquals(1, themePark.getAttractionsAllowedFor(visitor).size());
     }
 }
